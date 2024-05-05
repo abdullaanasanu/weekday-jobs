@@ -1,13 +1,16 @@
 "use client";
 
 // Imports
-import { use, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 // UI imports
 import Grid from "@mui/material/Grid";
+import Skeleton from "@mui/material/Skeleton";
 import Item from "./item";
+
+// App imports
 import { fetchJobList } from "@/store/job";
 
 // Component
@@ -23,7 +26,6 @@ export default function Jobs() {
   }, []);
 
   const fetchData = async () => {
-    // fetchJobList
     await dispatch(
       fetchJobList({
         page: jobs.page,
@@ -35,15 +37,28 @@ export default function Jobs() {
 
   return (
     <InfiniteScroll
-      dataLength={jobs.list.length}
+      dataLength={jobs.filteredList.length}
       next={fetchData}
-      hasMore={true}
-      loader={<p>Loading...</p>}
-      endMessage={<p>No more data to load.</p>}
+      hasMore={jobs.list.length < jobs.total}
+      loader={
+        <Grid container spacing={6}>
+          {Array(3).map((_, index) => (
+            <Grid item xs={4} key={index}>
+              <Skeleton
+                variant="rectangular"
+                width="100%"
+                height={118}
+                sx={{ borderRadius: 2 }}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      }
+      endMessage={jobs.list.length && <p>No more data to load.</p>}
     >
       <Grid container spacing={6}>
-        {jobs.list.map((job: any) => (
-          <Grid item xs={4}>
+        {jobs.filteredList.map((job: any) => (
+          <Grid item xs={4} key={job.jdUid}>
             <Item job={job} />
           </Grid>
         ))}

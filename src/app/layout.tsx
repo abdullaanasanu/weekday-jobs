@@ -1,7 +1,6 @@
 // imports
 import React from "react";
 import type { Metadata } from "next";
-import { Provider } from "react-redux";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 
 // UI imports

@@ -36,3 +36,7 @@ a {
   gap: 0.25rem;
   margin-right: 0.5rem;
 }
+
+.infinite-scroll-component {
+  overflow: unset !important;
+}

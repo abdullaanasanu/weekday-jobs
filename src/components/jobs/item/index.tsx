@@ -1,3 +1,6 @@
+// Imports
+import { useState } from "react";
+
 // UI imports
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -9,8 +12,22 @@ import { grey } from "@mui/material/colors";
 
 // Component
 export default function Item({ job }: { job: any }) {
+  // state
+  const [showAbout, showAboutToggle] = useState(false);
+
   return (
-    <Card sx={{ pt: 1, borderRadius: 5 }} elevation={3}>
+    <Card
+      sx={{
+        pt: 1,
+        borderRadius: 5,
+        cursor: "pointer",
+        ":hover": {
+          transform: "scale(1.02)",
+          transition: "all 0.3s ease",
+        },
+      }}
+      elevation={3}
+    >
       <CardContent className="job-item">
         <Typography
           variant="body2"
@@ -45,6 +62,7 @@ export default function Item({ job }: { job: any }) {
               color={grey[500]}
               sx={{
                 fontSize: "1rem",
+                lineHeight: "1rem",
                 fontWeight: 600,
                 letterSpacing: "1px",
               }}
@@ -59,6 +77,7 @@ export default function Item({ job }: { job: any }) {
                 color: grey[700],
                 fontWeight: 300,
                 textTransform: "capitalize",
+                mt: 0.5,
               }}
             >
               {job.jobRole}
@@ -104,7 +123,22 @@ export default function Item({ job }: { job: any }) {
           About Company:
         </Typography>
         <Typography variant="body2" component="p">
-          {job.jobDetailsFromCompany}
+          {/* {job.jobDetailsFromCompany} */}
+          {showAbout
+            ? job.jobDetailsFromCompany
+            : job.jobDetailsFromCompany.slice(0, 200)}{" "}
+          <Typography
+            onClick={() => showAboutToggle(!showAbout)}
+            variant="body2"
+            component="span"
+            sx={{
+              color: "var(--primary)",
+              cursor: "pointer",
+              fontWeight: 500,
+            }}
+          >
+            {showAbout ? "Show Less" : "Show More"}
+          </Typography>
         </Typography>
 
         <Typography
