@@ -20,6 +20,8 @@ export default function Filter() {
   // state
   const jobs = useSelector((state: any) => state.job);
 
+  console.log(jobs);
+
   const roles: any = formatSelectOptions(jobs.list, "jobRole");
   const locations: any = formatSelectOptions(jobs.list, "location");
   const minExp: any = formatSelectOptionsNumber(jobs.list, "minExp");
