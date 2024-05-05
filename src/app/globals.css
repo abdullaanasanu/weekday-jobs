@@ -29,7 +29,6 @@ a {
 .job-item .company-logo {
   width: 1.5rem;
   height: 2.5rem;
-  object-fit: cover;
 }
 
 .job-item .referral-avatars {

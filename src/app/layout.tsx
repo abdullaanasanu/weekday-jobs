@@ -1,5 +1,7 @@
 // imports
+import React from "react";
 import type { Metadata } from "next";
+import { Provider } from "react-redux";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 
 // UI imports
@@ -9,6 +11,9 @@ import Navbar from "@/components/navbar";
 
 import "./globals.css";
 import { theme } from "@/common/theme";
+
+// App imports
+import { Providers } from "@/store/provider";
 
 // Metadata
 export const metadata: Metadata = {
@@ -23,15 +28,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <Navbar />
-            <Container maxWidth="xl">{children}</Container>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
-      </body>
-    </html>
+    <Providers>
+      <html lang="en">
+        <body>
+          <AppRouterCacheProvider>
+            <ThemeProvider theme={theme}>
+              <Navbar />
+              <Container maxWidth="xl">{children}</Container>
+            </ThemeProvider>
+          </AppRouterCacheProvider>
+        </body>
+      </html>
+    </Providers>
   );
 }

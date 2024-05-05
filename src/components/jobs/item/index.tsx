@@ -8,7 +8,7 @@ import Avatar from "@mui/material/Avatar";
 import { grey } from "@mui/material/colors";
 
 // Component
-export default function Item() {
+export default function Item({ job }: { job: any }) {
   return (
     <Card sx={{ pt: 1, borderRadius: 5 }} elevation={3}>
       <CardContent className="job-item">
@@ -37,11 +37,7 @@ export default function Item() {
             mt: 3,
           }}
         >
-          <img
-            src="https://via.placeholder.com/150"
-            alt="Company logo"
-            className="company-logo"
-          />
+          <img src={job.logoUrl} alt="Company logo" className="company-logo" />
           <Box>
             <Typography
               variant="body2"
@@ -53,7 +49,7 @@ export default function Item() {
                 letterSpacing: "1px",
               }}
             >
-              Ema
+              {job.companyName}
             </Typography>
             <Typography
               variant="body1"
@@ -62,9 +58,10 @@ export default function Item() {
                 letterSpacing: "1px",
                 color: grey[700],
                 fontWeight: 300,
+                textTransform: "capitalize",
               }}
             >
-              Senior Frontend Developer
+              {job.jobRole}
             </Typography>
             <Typography
               variant="body2"
@@ -73,9 +70,10 @@ export default function Item() {
                 color: grey[700],
                 fontSize: "0.75rem",
                 mt: 0.5,
+                textTransform: "capitalize",
               }}
             >
-              India
+              {job.location}
             </Typography>
           </Box>
         </Box>
@@ -89,7 +87,11 @@ export default function Item() {
             letterSpacing: "0.5px",
           }}
         >
-          Estimated Salary: ₹18 - 35 LPA ✅
+          Estimated Salary:{" "}
+          {job.minJdSalary
+            ? `${job.salaryCurrencyCode} ${job.minJdSalary}k - ${job.maxJdSalary}k`
+            : `${job.salaryCurrencyCode} ${job.maxJdSalary}k`}{" "}
+          LPA ✅
         </Typography>
         <Typography
           variant="body1"
@@ -102,7 +104,7 @@ export default function Item() {
           About Company:
         </Typography>
         <Typography variant="body2" component="p">
-          Ema is a leading software development company in India.
+          {job.jobDetailsFromCompany}
         </Typography>
 
         <Typography
@@ -125,7 +127,9 @@ export default function Item() {
             fontWeight: 300,
           }}
         >
-          2 years
+          {job.minExp || job.maxExp
+            ? `${job.minExp || job.maxExp} years`
+            : "Not Specified"}
         </Typography>
 
         <Button

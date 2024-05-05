@@ -11,7 +11,7 @@ export const Select = ({ options = [], styles = {}, ...props }) => {
         {
           container: (provided: any, state: any) => ({
             ...provided,
-            minWidth: "15rem",
+            minWidth: "10rem",
           }),
           ...styles,
         } as any
