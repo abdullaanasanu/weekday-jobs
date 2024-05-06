@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <Box
       component="section"
-      sx={{ display: "flex", flexDirection: "column", gap: "2rem", py: 4 }}
+      sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}
     >
       <Filter />
       <Jobs />

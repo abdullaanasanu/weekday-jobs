@@ -1,5 +1,10 @@
+// imports
 import { createSlice } from "@reduxjs/toolkit";
 
+// App imports
+import { URL_API } from "@/common/env";
+
+// interface
 interface JobState {
   list: any[];
   filteredList: any[];
@@ -7,6 +12,7 @@ interface JobState {
   total: number;
 }
 
+// initial state
 export const jobSlice = createSlice({
   name: "job",
   initialState: {
@@ -40,19 +46,16 @@ export const fetchJobList =
       const offset = (page - 1) * limit;
 
       // fetch data
-      const response = await fetch(
-        "https://api.weekday.technology/adhoc/getSampleJdJSON",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            limit,
-            offset,
-          }),
-        }
-      );
+      const response = await fetch(`${URL_API}adhoc/getSampleJdJSON`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          limit,
+          offset,
+        }),
+      });
       const data = await response.json();
       dispatch(listSet(data.jdList));
       dispatch(pageSet(page + 1));

@@ -8,10 +8,10 @@ import InfiniteScroll from "react-infinite-scroll-component";
 // UI imports
 import Grid from "@mui/material/Grid";
 import Skeleton from "@mui/material/Skeleton";
-import Item from "./item";
 
 // App imports
 import { fetchJobList } from "@/store/job";
+import Item from "./item";
 
 // Component
 export default function Jobs() {
@@ -32,8 +32,6 @@ export default function Jobs() {
       })
     );
   };
-
-  console.log(jobs);
 
   return (
     <InfiniteScroll
@@ -56,9 +54,15 @@ export default function Jobs() {
       }
       endMessage={jobs.list.length && <p>No more data to load.</p>}
     >
-      <Grid container spacing={6}>
+      <Grid
+        container
+        spacing={6}
+        sx={{
+          pb: 4,
+        }}
+      >
         {jobs.filteredList.map((job: any) => (
-          <Grid item xs={4} key={job.jdUid}>
+          <Grid item xs={12} md={6} lg={4} key={job.jdUid}>
             <Item job={job} />
           </Grid>
         ))}

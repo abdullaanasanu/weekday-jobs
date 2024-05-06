@@ -32,6 +32,7 @@ export default function Filter() {
     minSalary: "",
   });
 
+  // options
   const roles: any = formatSelectOptions(jobs.list, "jobRole");
   const locations: any = formatSelectOptions(jobs.list, "location");
   const minExp: any = formatSelectOptionsNumber(jobs.list, "minExp");
@@ -47,7 +48,10 @@ export default function Filter() {
   }, [filters, jobs.list]);
 
   return (
-    <Box component="section" sx={{ display: "flex", gap: "0.5rem" }}>
+    <Box
+      component="section"
+      sx={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}
+    >
       <Select
         options={roles}
         placeholder="Roles"

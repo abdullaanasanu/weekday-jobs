@@ -33,7 +33,14 @@ export default function RootLayout({
           <AppRouterCacheProvider>
             <ThemeProvider theme={theme}>
               <Navbar />
-              <Container maxWidth="xl">{children}</Container>
+              <Container
+                maxWidth="xl"
+                sx={{
+                  py: 4,
+                }}
+              >
+                {children}
+              </Container>
             </ThemeProvider>
           </AppRouterCacheProvider>
         </body>
