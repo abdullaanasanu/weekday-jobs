@@ -16,6 +16,14 @@ export const Select = ({ options = [], styles = {}, ...props }) => {
           ...styles,
         } as any
       }
+      theme={(theme) => ({
+        ...theme,
+        borderRadius: 0,
+        colors: {
+          ...theme.colors,
+          primary: "#3f51b5",
+        },
+      })}
       {...props}
     />
   );

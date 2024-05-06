@@ -70,7 +70,7 @@ export const filterJobList =
   ({ filters, list }: any) =>
   async (dispatch: any) => {
     const jobs = list;
-    console.log("filters", filters.minSalary);
+
     const filteredList = jobs.filter((job: any) => {
       const role = filters.role.length
         ? filters.role.find((r: any) => r.value === job.jobRole)

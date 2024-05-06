@@ -52,7 +52,7 @@ export default function Jobs() {
           ))}
         </Grid>
       }
-      endMessage={jobs.list.length && <p>No more data to load.</p>}
+      endMessage={jobs.list.length ? <p>No more data to load.</p> : null}
     >
       <Grid
         container

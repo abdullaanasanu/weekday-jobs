@@ -23,6 +23,9 @@ export const theme = createTheme({
           textTransform: "capitalize",
           fontWeight: 400,
           fontSize: "1rem",
+          ":hover": {
+            boxShadow: "none",
+          },
         },
       },
     },
@@ -31,6 +34,9 @@ export const theme = createTheme({
         input: {
           padding: "6px 12px",
         },
+      },
+      defaultProps: {
+        color: "secondary",
       },
     },
   },

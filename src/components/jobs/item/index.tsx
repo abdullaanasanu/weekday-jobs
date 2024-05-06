@@ -173,6 +173,11 @@ export default function Item({ job }: { job: any }) {
             mt: 2,
             py: 1,
             background: "var(--secondary)",
+            ":hover": {
+              background: "var(--secondary)",
+              opacity: 0.9,
+              transition: "all 0.3s ease",
+            },
           }}
         >
           ⚡ Easy Apply
@@ -186,6 +191,11 @@ export default function Item({ job }: { job: any }) {
             fontWeight: 200,
             fontSize: "0.9rem",
             py: 1,
+            ":hover": {
+              background: "var(--primary)",
+              opacity: 0.9,
+              transition: "all 0.3s ease",
+            },
           }}
         >
           <div className="referral-avatars">
